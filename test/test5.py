@@ -87,36 +87,89 @@ from types import MethodType
 # print(p1.birth)
 # print(p1.age)
 
-class Screen(object):
+# class Screen(object):
+#
+#     @property
+#     def width(self):
+#         return self._width
+#
+#     @width.setter
+#     def width(self, value):
+#         self._width = value
+#
+#     @property
+#     def height(self):
+#         return self._height
+#
+#     @height.setter
+#     def height(self, value):
+#         self._height = value
+#
+#     @property
+#     def resolution(self):
+#         return self._width * self._height
+#
+#
+# s = Screen()
+# s.width = 1024
+# s.height = 768
+# print(s.resolution)
+# assert s.resolution == 786432, '1024 * 768 = %d ?' % s.resolution
 
-    @property
-    def width(self):
-        return self._width
+# class Student(object):
+#
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def __str__(self):
+#         return 'Student object,(name %s)' % self.name
+#
+#     __repr__ = __str__
+#
+# print(Student('michal'))
+# Student('liuy')
+#
+#
+# class Fib(object):
+#
+#     def __init__(self):
+#         self.a, self.b = 0, 1
+#
+#     def __iter__(self):
+#         return self
+#
+#     def __next__(self):
+#         self.a, self.b = self.b, self.a + self.b
+#         if self.a > 100:
+#             raise StopIteration()
+#         return self.a
+#
+# for i in Fib():
+#     print(i)
 
-    @width.setter
-    def width(self, value):
-        self._width = value
+class Fib(object):
 
-    @property
-    def height(self):
-        return self._height
+    def __getitem__(self, n):
+        if isinstance(n, int):
+            a, b = 1, 1
+            for i in range(n):
+                a, b = b, a + b
+            return a
+        if isinstance(n, slice):
+            start = n.start
+            stop = n.stop
+            if n.start is None:
+                start = 0
+            a, b = 1, 1
+            l = []
+            for i in range(stop):
+                if i >= start:
+                    l.append(a)
+                a, b = b, a + b
+            return l
 
-    @height.setter
-    def height(self, value):
-        self._height = value
-
-    @property
-    def resolution(self):
-        return self._width * self._height
-
-
-s = Screen()
-s.width = 1024
-s.height = 768
-print(s.resolution)
-assert s.resolution == 786432, '1024 * 768 = %d ?' % s.resolution
-
-
+f = Fib()
+print(f[3:10])
 
 
 
