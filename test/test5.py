@@ -147,29 +147,68 @@ from types import MethodType
 # for i in Fib():
 #     print(i)
 
-class Fib(object):
+# class Fib(object):
+#
+#     def __getitem__(self, n):
+#         if isinstance(n, int):
+#             a, b = 1, 1
+#             for i in range(n):
+#                 a, b = b, a + b
+#             return a
+#         if isinstance(n, slice):
+#             start = n.start
+#             stop = n.stop
+#             if n.start is None:
+#                 start = 0
+#             a, b = 1, 1
+#             l = []
+#             for i in range(stop):
+#                 if i >= start:
+#                     l.append(a)
+#                 a, b = b, a + b
+#             return l
+#
+# f = Fib()
+# print(f[3:10])
 
-    def __getitem__(self, n):
-        if isinstance(n, int):
-            a, b = 1, 1
-            for i in range(n):
-                a, b = b, a + b
-            return a
-        if isinstance(n, slice):
-            start = n.start
-            stop = n.stop
-            if n.start is None:
-                start = 0
-            a, b = 1, 1
-            l = []
-            for i in range(stop):
-                if i >= start:
-                    l.append(a)
-                a, b = b, a + b
-            return l
+# 枚举类
+#
+# from enum import Enum, unique
+#
+# Month = Enum('Month', ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
+#
+# for name, member in Month.__members__.items():
+#     print(name, '=>', member, ',', member.value)
+#
+#
+# @unique
+# class Weekend(Enum):
+#
+#     Sun = 0
+#     Mon = 1
+#     Tue = 2
+#     Wed = 3
+#     Thu = 4
+#     Fri = 5
+#     Sat = 6
+#
+# print(Weekend.Sun)
+# print(Weekend['Tue'])
+# print(Weekend.Wed.value)
+# for name, member in Weekend.__members__.items():
+#     print(name, '=>', member)
 
-f = Fib()
-print(f[3:10])
+# 元类
 
 
+def fn(self, name='world'):
+    print('Hello, %s' % name)
+
+Hello = type('Hello', (object,), dict(hello=fn))
+
+h = Hello()
+h.hello()
+
+
+# metaclass 非人类
 
