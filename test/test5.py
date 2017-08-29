@@ -147,29 +147,30 @@ from types import MethodType
 # for i in Fib():
 #     print(i)
 
-class Fib(object):
+# class Fib(object):
+#
+#     def __getitem__(self, n):
+#         if isinstance(n, int):
+#             a, b = 1, 1
+#             for i in range(n):
+#                 a, b = b, a + b
+#             return a
+#         if isinstance(n, slice):
+#             start = n.start
+#             stop = n.stop
+#             if n.start is None:
+#                 start = 0
+#             a, b = 1, 1
+#             l = []
+#             for i in range(stop):
+#                 if i >= start:
+#                     l.append(a)
+#                 a, b = b, a + b
+#             return l
+#
+# f = Fib()
+# print(f[3:10])
 
-    def __getitem__(self, n):
-        if isinstance(n, int):
-            a, b = 1, 1
-            for i in range(n):
-                a, b = b, a + b
-            return a
-        if isinstance(n, slice):
-            start = n.start
-            stop = n.stop
-            if n.start is None:
-                start = 0
-            a, b = 1, 1
-            l = []
-            for i in range(stop):
-                if i >= start:
-                    l.append(a)
-                a, b = b, a + b
-            return l
-
-f = Fib()
-print(f[3:10])
 
 
 
