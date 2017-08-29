@@ -171,6 +171,44 @@ from types import MethodType
 # f = Fib()
 # print(f[3:10])
 
+# 枚举类
+#
+# from enum import Enum, unique
+#
+# Month = Enum('Month', ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
+#
+# for name, member in Month.__members__.items():
+#     print(name, '=>', member, ',', member.value)
+#
+#
+# @unique
+# class Weekend(Enum):
+#
+#     Sun = 0
+#     Mon = 1
+#     Tue = 2
+#     Wed = 3
+#     Thu = 4
+#     Fri = 5
+#     Sat = 6
+#
+# print(Weekend.Sun)
+# print(Weekend['Tue'])
+# print(Weekend.Wed.value)
+# for name, member in Weekend.__members__.items():
+#     print(name, '=>', member)
+
+# 元类
 
 
+def fn(self, name='world'):
+    print('Hello, %s' % name)
+
+Hello = type('Hello', (object,), dict(hello=fn))
+
+h = Hello()
+h.hello()
+
+
+# metaclass 非人类
 
