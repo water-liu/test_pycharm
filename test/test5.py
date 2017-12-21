@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-from types import MethodType
+# from types import MethodType
 
 
 # class Student(object):
@@ -200,17 +200,86 @@ from types import MethodType
 
 # 元类
 
-
-def fn(self, name='world'):
-    print('Hello, %s' % name)
-
-Hello = type('Hello', (object,), dict(hello=fn))
-
-h = Hello()
-h.hello()
+#
+# def fn(self, name='world'):
+#     print('Hello, %s' % name)
+#
+# Hello = type('Hello', (object,), dict(hello=fn))
+#
+# h = Hello()
+# h.hello()
 
 
 # metaclass 非人类
+
+# 异常
+# try...except...finally
+#
+# try:
+#     print('try...')
+#     r = 10 / 0
+#     print(r)
+# except ZeroDivisionError as e:
+#     print('except:', e)
+# finally:
+#     print('finally...')
+# print('END')
+
+# try:
+#     print('try...')
+#     r = 10/int('2')
+#     print('result:', r)
+# except ValueError as e:
+#     print('except:', e)
+# except ZeroDivisionError as e:
+#     print('except:', e)
+# else:
+#     print('no error')
+# finally:
+#     print('finally...')
+# print('END')
+#
+#
+# try:
+#     foo()
+# except ValueError as e:
+#     print('ValueError')
+# except UnicodeError as e:
+#     print('UnicodeError')
+
+# 第二个except永远也捕获不到UnicodeError，因为UnicodeError是ValueError的子类，如果有，也被第一个except给捕获了。
+
+# Python所有的错误都是从BaseException类派生的，常见的错误类型和继承关系看这里：
+# https://docs.python.org/3/library/exceptions.html#exception-hierarchy
+import logging
+
+def foo(s):
+    return 10 / int(s)
+
+
+def bar(s):
+    return foo(s) * 2
+
+
+# def main():
+#     try:
+#         bar('0')
+#     except ZeroDivisionError as e:
+#         print('except', e)
+#     finally:
+#         print('finally')
+
+def main():
+    try:
+        bar('0')
+    except Exception as e:
+        logging.exception(e)
+
+main()
+print('END')
+
+
+
 
 
 
